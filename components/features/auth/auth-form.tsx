@@ -61,6 +61,7 @@ export function AuthForm({ mode }: AuthFormProps) {
   const [isPending, startTransition] = useTransition();
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const content = formContent[mode];
 
@@ -117,12 +118,18 @@ export function AuthForm({ mode }: AuthFormProps) {
       <CardContent className="space-y-5 p-6">
         <form
           className="space-y-4"
-          onSubmit={(event) => {
+          onSubmit={async (event) => {
             event.preventDefault();
+
             const formData = new FormData(event.currentTarget);
-            startTransition(() => {
-              void handleSubmit(formData);
-            });
+
+            setIsLoading(true);
+
+            try {
+              await handleSubmit(formData);
+            } finally {
+              setIsLoading(false);
+            }
           }}
         >
           {mode === "signup" ? (
@@ -193,7 +200,7 @@ export function AuthForm({ mode }: AuthFormProps) {
                         "flex items-center gap-2 text-xs transition-colors",
                         isComplete
                           ? "text-emerald-700 dark:text-emerald-300"
-                          : "text-muted-foreground"
+                          : "text-muted-foreground",
                       )}
                     >
                       <span
@@ -201,7 +208,7 @@ export function AuthForm({ mode }: AuthFormProps) {
                           "flex size-4 items-center justify-center rounded-full border transition-colors",
                           isComplete
                             ? "border-emerald-300 bg-emerald-100 text-emerald-700 dark:border-emerald-700 dark:bg-emerald-950 dark:text-emerald-300"
-                            : "border-border bg-background"
+                            : "border-border bg-background",
                         )}
                       >
                         {isComplete ? <Check className="size-3" /> : null}
@@ -214,8 +221,8 @@ export function AuthForm({ mode }: AuthFormProps) {
             ) : null}
           </div>
 
-          <Button className="h-11 w-full rounded-xl" disabled={isPending}>
-            {isPending ? "Please wait..." : content.submitLabel}
+          <Button className="h-11 w-full rounded-xl" disabled={isLoading}>
+            {isLoading ? "Please wait..." : content.submitLabel}
           </Button>
         </form>
 
