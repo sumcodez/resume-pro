@@ -1,5 +1,12 @@
 import Link from "next/link";
-import { ArrowRight, LayoutDashboard, Settings, Sparkles } from "lucide-react";
+import {
+  ArrowRight,
+  LayoutDashboard,
+  Menu,
+  Settings,
+  Sparkles,
+  X,
+} from "lucide-react";
 
 import { LogoutButton } from "@/components/common/logout-button";
 import { ThemeToggle } from "@/components/common/theme-toggle";
@@ -42,7 +49,7 @@ export async function AppNavbar({ className }: AppNavbarProps) {
               </div>
             </Link>
 
-            <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+            <div className="hidden items-center gap-2 sm:gap-3 md:flex">
               <ThemeToggle />
               {sessionUser ? (
                 <>
@@ -82,6 +89,58 @@ export async function AppNavbar({ className }: AppNavbarProps) {
                   </Button>
                 </>
               )}
+            </div>
+
+            <div className="flex items-center gap-2 md:hidden">
+              <ThemeToggle />
+              <details className="group/menu relative">
+                <summary className="flex size-10 cursor-pointer list-none items-center justify-center rounded-2xl border border-border/70 bg-background/70 text-foreground shadow-sm backdrop-blur transition hover:border-primary/40 hover:bg-muted focus-visible:ring-3 focus-visible:ring-ring/30 [&::-webkit-details-marker]:hidden">
+                  <Menu className="size-5 group-open/menu:hidden" />
+                  <X className="hidden size-5 group-open/menu:block" />
+                  <span className="sr-only">Toggle navigation menu</span>
+                </summary>
+
+                <div className="absolute right-0 top-12 z-50 w-56 overflow-hidden rounded-2xl border border-white/35 bg-background/95 p-2 shadow-[0_24px_70px_rgba(15,23,42,0.18)] backdrop-blur-2xl dark:border-white/10 dark:shadow-[0_24px_80px_rgba(0,0,0,0.34)]">
+                  {sessionUser ? (
+                    <div className="grid gap-1">
+                      <Button asChild variant="ghost" className="justify-start">
+                        <Link href="/dashboard">Dashboard</Link>
+                      </Button>
+                      <Button asChild variant="ghost" className="justify-start">
+                        <Link href="/pricing">Pricing</Link>
+                      </Button>
+                      <Button asChild variant="ghost" className="justify-start">
+                        <Link href="/settings">
+                          <Settings className="size-4" />
+                          Settings
+                        </Link>
+                      </Button>
+                      <Button asChild variant="outline" className="justify-start">
+                        <Link href="/report">
+                          <LayoutDashboard className="size-4" />
+                          Latest report
+                        </Link>
+                      </Button>
+                      <LogoutButton />
+                    </div>
+                  ) : (
+                    <div className="grid gap-1">
+                      <Button asChild variant="ghost" className="justify-start">
+                        <Link href="/">Overview</Link>
+                      </Button>
+                      <Button asChild variant="outline" className="justify-start">
+                        <Link href="/login">Sign in</Link>
+                      </Button>
+                      <Button asChild className="justify-start">
+                        <Link href="/signup">
+                          Get started
+                          <ArrowRight className="size-4" />
+                        </Link>
+                      </Button>
+                    </div>
+                  )}
+                </div>
+              </details>
             </div>
           </div>
         </header>
