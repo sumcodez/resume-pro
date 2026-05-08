@@ -1,7 +1,7 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
-export { formatPercent } from "./utils/format";
+export * from "./format";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
