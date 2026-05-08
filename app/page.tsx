@@ -44,10 +44,10 @@ const featureCards = [
 ];
 
 const statItems = [
-  { value: "6", label: "score categories" },
-  { value: "1", label: "dedicated report" },
-  { value: "PDF", label: "file upload" },
-  { value: "AI", label: "improvement guidance" },
+  { value: "6", label: "score categories", mobileLabel: "score" },
+  { value: "1", label: "dedicated report", mobileLabel: "report" },
+  { value: "PDF", label: "file upload", mobileLabel: "upload" },
+  { value: "AI", label: "improvement guidance", mobileLabel: "tips" },
 ];
 
 const platformNotes = [
@@ -128,34 +128,35 @@ export default async function HomePage() {
           </div>
 
           <Card className="overflow-hidden border-border/70 bg-[radial-gradient(circle_at_top_right,_color-mix(in_oklch,var(--primary)_18%,transparent),_transparent_32%),color-mix(in_oklch,var(--card)_94%,transparent)] shadow-xl">
-            <CardContent className="space-y-6 p-6 sm:p-12">
-              <div className="flex items-center justify-between rounded-[1.5rem] border border-border/70 bg-background/90 px-4 py-3">
+            <CardContent className="space-y-4 p-4 sm:space-y-6 sm:p-12">
+              <div className="flex items-center justify-between gap-3 rounded-[1.25rem] border border-border/70 bg-background/90 px-3 py-3 sm:rounded-[1.5rem] sm:px-4">
                 <div>
                   <p className="text-sm text-muted-foreground">Report preview</p>
-                  <p className="text-lg font-semibold">Frontend Engineer Resume</p>
+                  <p className="text-base font-semibold sm:text-lg">Frontend Engineer Resume</p>
                 </div>
-                <div className="rounded-2xl bg-emerald-100 px-4 py-2 text-sm font-semibold text-emerald-700">
+                <div className="shrink-0 rounded-2xl bg-emerald-100 px-3 py-2 text-sm font-semibold text-emerald-700 sm:px-4">
                   84 / 100
                 </div>
               </div>
 
-              <div className="grid gap-3 sm:grid-cols-2">
+              <div className="grid grid-cols-2 gap-2 sm:gap-3">
                 {statItems.map((item) => (
                   <div
                     key={item.label}
-                    className="rounded-[1.5rem] border border-border/70 bg-background/85 px-4 py-4"
+                    className="rounded-2xl border border-border/70 bg-background/85 px-2 py-3 text-center sm:rounded-[1.5rem] sm:px-4 sm:py-4 sm:text-left"
                   >
-                    <p className="text-2xl font-semibold tracking-tight">{item.value}</p>
-                    <p className="mt-1 text-sm text-muted-foreground">{item.label}</p>
+                    <p className="text-lg font-semibold tracking-tight sm:text-2xl">{item.value}</p>
+                    <p className="mt-1 text-[0.68rem] text-muted-foreground sm:hidden">{item.mobileLabel}</p>
+                    <p className="mt-1 hidden text-sm text-muted-foreground sm:block">{item.label}</p>
                   </div>
                 ))}
               </div>
 
-              <div className="rounded-[1.75rem] border border-white/10 bg-slate-950 px-5 py-5 text-slate-50 shadow-[0_20px_55px_rgba(14,165,233,0.20)]">
+              <div className="rounded-[1.35rem] border border-white/10 bg-slate-950 px-4 py-4 text-slate-50 shadow-[0_20px_55px_rgba(14,165,233,0.20)] sm:rounded-[1.75rem] sm:px-5 sm:py-5">
                 <div className="flex items-center justify-between gap-3">
                   <div>
-                  <p className="text-sm text-slate-400">Keyword coverage</p>
-                    <p className="mt-1 text-xl font-semibold">Strong match</p>
+                    <p className="text-sm text-slate-400">Keyword coverage</p>
+                    <p className="mt-1 text-lg font-semibold sm:text-xl">Strong match</p>
                   </div>
                   <div className="rounded-full bg-white/10 px-3 py-1 text-sm text-slate-200">
                     4 gaps
