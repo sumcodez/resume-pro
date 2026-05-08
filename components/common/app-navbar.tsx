@@ -106,12 +106,16 @@ export async function AppNavbar({ className }: AppNavbarProps) {
                   {sessionUser ? (
                     <div className="grid gap-1">
                       <Button asChild variant="ghost" className="justify-start">
-                        <Gauge className="size-4"/>
-                        <Link href="/dashboard">Dashboard</Link>
+                        <Link href="/dashboard">
+                          <Gauge className="size-4" />
+                          Dashboard
+                        </Link>
                       </Button>
                       <Button asChild variant="ghost" className="justify-start">
-                        <BadgeIndianRupee className="size-4" />
-                        <Link href="/pricing">Pricing</Link>
+                        <Link href="/pricing">
+                          <BadgeIndianRupee className="size-4" />
+                          Pricing
+                        </Link>
                       </Button>
                       <Button asChild variant="ghost" className="justify-start">
                         <Link href="/settings">
