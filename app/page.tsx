@@ -77,10 +77,10 @@ export default async function HomePage() {
 
   return (
     <main className="premium-page-bg min-h-screen">
-      <section className="mx-auto flex w-full max-w-6xl flex-col px-6 py-6 sm:px-8 lg:px-10">
+      <section className="mx-auto flex w-full max-w-6xl flex-col px-6 pb-6 pt-28 sm:px-8 sm:pt-36 lg:px-10">
         <AppNavbar />
 
-        <div className="grid gap-8 py-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:py-28">
+        <div className="grid gap-8 py-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:py-20">
           <div className="space-y-8">
             <div className="space-y-5">
               <div className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-background/70 px-4 py-2 text-sm text-muted-foreground shadow-sm backdrop-blur">

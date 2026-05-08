@@ -21,29 +21,29 @@ export async function AppNavbar({ className }: AppNavbarProps) {
   const sessionUser = await getSessionUser();
 
   return (
-    <div className="fixed top-4 left-0 right-0 z-50">
-      <div className="max-w-292 mx-auto px-6 sm:px-8 lg:px-10">
+    <div className="fixed left-0 right-0 top-3 z-50 sm:top-4">
+      <div className="mx-auto max-w-292 px-3 sm:px-8 lg:px-10">
         <header
-          className={`group relative overflow-hidden rounded-[2rem] border border-white/35 bg-white/72 px-5 py-4 shadow-[0_24px_80px_rgba(15,23,42,0.12)] backdrop-blur-2xl transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/35 hover:shadow-[0_30px_95px_rgba(14,165,233,0.18)] dark:border-white/10 dark:bg-slate-950/58 dark:shadow-[0_24px_90px_rgba(0,0,0,0.35)] sm:px-6 sm:py-5 ${className ?? ""}`}
+          className={`group relative rounded-[1.5rem] border border-white/35 bg-white/72 px-3 py-3 shadow-[0_24px_80px_rgba(15,23,42,0.12)] backdrop-blur-2xl transition-all duration-300 hover:border-primary/35 hover:shadow-[0_30px_95px_rgba(14,165,233,0.18)] dark:border-white/10 dark:bg-slate-950/58 dark:shadow-[0_24px_90px_rgba(0,0,0,0.35)] sm:rounded-[2rem] sm:px-6 sm:py-5 md:hover:-translate-y-0.5 ${className ?? ""}`}
         >
           <div className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/70 to-transparent" />
           <div className="pointer-events-none absolute -left-20 -top-20 size-44 rounded-full bg-cyan-300/18 blur-3xl transition-opacity duration-300 group-hover:opacity-90" />
           <div className="pointer-events-none absolute -right-16 top-4 size-36 rounded-full bg-fuchsia-300/12 blur-3xl" />
 
-          <div className="relative flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          <div className="relative flex items-center justify-between gap-3">
             <Link
               href={sessionUser ? "/dashboard" : "/"}
-              className="flex items-center gap-3 rounded-3xl outline-none transition-transform hover:scale-[1.01] focus-visible:ring-3 focus-visible:ring-ring/30"
+              className="flex min-w-0 items-center gap-2 rounded-3xl outline-none transition-transform hover:scale-[1.01] focus-visible:ring-3 focus-visible:ring-ring/30 sm:gap-3"
             >
-              <div className="relative flex size-11 items-center justify-center overflow-hidden rounded-2xl bg-slate-950 text-white shadow-[0_0_30px_rgba(14,165,233,0.35)] dark:bg-white dark:text-slate-950">
+              <div className="relative flex size-9 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-slate-950 text-white shadow-[0_0_30px_rgba(14,165,233,0.35)] dark:bg-white dark:text-slate-950 sm:size-11">
                 <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/40 via-transparent to-fuchsia-400/35" />
-                <Sparkles className="size-5" />
+                <Sparkles className="size-4 sm:size-5" />
               </div>
-              <div>
-                <p className="text-sm font-medium text-muted-foreground">
+              <div className="min-w-0">
+                <p className="truncate text-[0.65rem] font-medium text-muted-foreground sm:text-sm">
                   Resume Score
                 </p>
-                <h1 className="text-lg font-semibold tracking-tight">
+                <h1 className="truncate text-sm font-semibold tracking-tight sm:text-lg">
                   AI Resume Review
                 </h1>
               </div>
@@ -91,7 +91,7 @@ export async function AppNavbar({ className }: AppNavbarProps) {
               )}
             </div>
 
-            <div className="flex items-center gap-2 md:hidden">
+            <div className="ml-auto flex shrink-0 items-center gap-2 md:hidden">
               <ThemeToggle />
               <details className="group/menu relative">
                 <summary className="flex size-10 cursor-pointer list-none items-center justify-center rounded-2xl border border-border/70 bg-background/70 text-foreground shadow-sm backdrop-blur transition hover:border-primary/40 hover:bg-muted focus-visible:ring-3 focus-visible:ring-ring/30 [&::-webkit-details-marker]:hidden">
